@@ -1,8 +1,18 @@
-package = []
+[[package]]
+name = "wemake"
+version = "0.1.0"
+description = "You should probably use wemake-python-styleguide instead"
+category = "dev"
+optional = false
+python-versions = ">=3.6,<4.0"
 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "fafb334cb038533f851c23d0b63254223abf72ce4f02987e7064b0c95566699a"
+content-hash = "c99e28d74326116c7d7defa85910240586a1419996afb8f5e332bd0dcb7f2997"
 
 [metadata.files]
+wemake = [
+    {file = "wemake-0.1.0-py3-none-any.whl", hash = "sha256:a4485834882718f7eb474382f28a59f94e99132ba89078ef4421b49aae91329d"},
+    {file = "wemake-0.1.0.tar.gz", hash = "sha256:5f0cbdc4f9c26dd750928ad3aa73e3dba9af4fa29fba4694b688ea79d01e2748"},
+]
