@@ -49,51 +49,6 @@ def diff_result_to_string(sort_list: list) -> str:
     return last_tmp.format('{', result_string, '\n}')
 
 
-def the_keys_are_in_the_template(template: dict, new_file: dict) -> list:
-    """Get the keys that are in the template.
-
-    is_in_two_files = list(new_file.keys() - template.keys())
-
-    Arguments:
-        template: dict
-        new_file: dict
-
-    Returns:
-        list
-    """
-    return list(new_file.keys() - template.keys())
-
-
-def there_are_no_keys_in_the_template(template: dict, new_file: dict) -> list:
-    """Get keys that are not in the template.
-
-    not_in_the_template = list(template.keys() - new_file.keys())
-
-    Arguments:
-        template: dict
-        new_file: dict
-
-    Returns:
-        list
-    """
-    return list(template.keys() - new_file.keys())
-
-
-def the_keys_are_in_both_files(template: dict, new_file: dict) -> list:
-    """Get the keys that are in both files.
-
-    is_in_two_files = list(template.keys() & new_file.keys())
-
-    Arguments:
-        template: dict
-        new_file: dict
-
-    Returns:
-        list
-    """
-    return list(template.keys() & new_file.keys())
-
-
 def sorting_to_list(*args) -> list:
     """Sort values into a list.
 
@@ -164,9 +119,9 @@ def generate_diff(template, new_file) -> str:
     Returns:
         str
     """
-    remove = there_are_no_keys_in_the_template(template, new_file)
-    add = the_keys_are_in_the_template(template, new_file)
-    unchanged = the_keys_are_in_both_files(template, new_file)
+    remove = list(template.keys() - new_file.keys())
+    add = list(new_file.keys() - template.keys())
+    unchanged = list(template.keys() & new_file.keys())
     sort_list = sorting_to_list(remove, add, unchanged)
     diff_list = difference_to_list(template, new_file, add, remove, sort_list)
 
