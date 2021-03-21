@@ -2,7 +2,7 @@
 import argparse
 from sys import stdout
 
-from differences.kernel import (read_file, gendiff)
+from differences.kernel import gendiff, read_file
 
 
 def main():
