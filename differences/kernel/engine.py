@@ -109,8 +109,8 @@ def difference_to_list(template, new_file, add, remove, sorted_list) -> list:
     return diff_result
 
 
-def generate_diff(template, new_file) -> str:
-    """Run methods in module generate_diff.
+def kernel_differences(template, new_file) -> str:
+    """Run methods in module engine.
 
     Args:
         template: dict
