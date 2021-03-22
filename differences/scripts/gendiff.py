@@ -2,7 +2,23 @@
 import argparse
 from sys import stdout
 
-from differences.kernel import gendiff, read_file
+from differences.kernel.engine import kernel_differences
+from differences.kernel.read_file import read_json_file
+
+
+def generate_diff(path_one, path_two):
+    """To reuse the kernel as a library.
+
+    Args:
+        path_one: file template
+        path_two: new file
+
+    Returns:
+        str
+    """
+    file_one = read_json_file(path_one)
+    file_two = read_json_file(path_two)
+    return kernel_differences(file_one, file_two)
 
 
 def main():
@@ -18,9 +34,9 @@ def main():
     parser.add_argument('second_file', type=str, help='positional arguments')
     parser.add_argument('-f', '--format', help='set format of output')
     args = parser.parse_args()
-    file_path_one = read_file.read_json_file(args.first_file)
-    file_path_two = read_file.read_json_file(args.second_file)
-    stdout.write(gendiff.generate_diff(file_path_one, file_path_two))
+
+    diff = generate_diff(args.first_file, args.second_file)
+    stdout.write(diff)
 
 
 if __name__ == '__main__':
