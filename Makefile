@@ -16,3 +16,5 @@ reinstall:
 	make build
 	make publish
 	make package-install
+diff:
+	poetry run gendiff file_1.json file_2.json
