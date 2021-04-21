@@ -8,6 +8,8 @@ package-install:
 	python3 -m pip install --user dist/*.whl
 lint:
 	poetry run flake8 differences
+test:
+	poetry run pytest
 remove:
 	pip3 uninstall hexlet-code
 reinstall:
