@@ -1,7 +1,19 @@
 """Test modules kernel package."""
 import pytest
-from differences.kernel.engine import kernel_differences, multiple_replace
+from differences.kernel.engine import (
+    diff_result_to_string,
+    kernel_differences,
+    multiple_replace,
+)
 from differences.kernel.read_file import read_json_file
+from differences.tests.fixtures.result_to_string_test import (
+    first_answer,
+    first_validator,
+    second_answer,
+    second_validator,
+    third_answer,
+    third_validator,
+)
 
 
 def test_engine():
@@ -31,3 +43,25 @@ def test_multiple_replace(string_line, answer):
     """
     replace_values = {'{': '', '}': '', ':': '', "'": ''}
     assert multiple_replace(string_line, replace_values) == answer
+
+
+@pytest.mark.parametrize(
+    'sorted_list, answers',
+    [(first_validator, first_answer), (second_validator, second_answer),
+     (third_validator, third_answer),
+     ])
+def test_diff_result_to_string(sorted_list, answers):
+    """Test function differences result to string.
+
+    Function takes a list of values and returns result as block
+        {
+            first values
+            second values
+
+        }
+
+    Args:
+        sorted_list: sorted list of values
+        answers: the correct line after the execution of the function
+    """
+    assert diff_result_to_string(sorted_list) == answers
