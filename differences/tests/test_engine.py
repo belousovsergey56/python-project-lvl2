@@ -4,8 +4,15 @@ from differences.kernel.engine import (
     diff_result_to_string,
     kernel_differences,
     multiple_replace,
+    sorting_to_list,
 )
 from differences.kernel.read_file import read_json_file
+from differences.tests.fixtures.result_sorting_to_list import (
+    first_block,
+    first_block_answer,
+    second_block,
+    second_block_answer,
+)
 from differences.tests.fixtures.result_to_string_test import (
     first_answer,
     first_validator,
@@ -65,3 +72,22 @@ def test_diff_result_to_string(sorted_list, answers):
         answers: the correct line after the execution of the function
     """
     assert diff_result_to_string(sorted_list) == answers
+
+
+@pytest.mark.parametrize('list_one', 'list_two', 'list_three', 'answer', [
+    (first_block[0], first_block[1], first_block[2], first_block_answer),
+    (second_block[0], second_block[1], second_block[2], second_block_answer),
+])
+def test_sorting_to_list(list_one, list_two, list_three, answer):
+    """Test function sorting to list.
+
+    The function summarizes the arguments - lists
+    and returns a sorted list of items
+
+    Args:
+        list_one: list of values
+        list_two: second list of values
+        list_three: third list of values
+        answer: summary of lists and sorted by order
+    """
+    assert sorting_to_list(list_one, list_two, list_three) == answer
