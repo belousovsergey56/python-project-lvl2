@@ -74,7 +74,7 @@ def test_diff_result_to_string(sorted_list, answers):
     assert diff_result_to_string(sorted_list) == answers
 
 
-@pytest.mark.parametrize('list_one', 'list_two', 'list_three', 'answer', [
+@pytest.mark.parametrize('list_one, list_two, list_three, answer', [
     (first_block[0], first_block[1], first_block[2], first_block_answer),
     (second_block[0], second_block[1], second_block[2], second_block_answer),
 ])
