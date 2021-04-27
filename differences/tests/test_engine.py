@@ -7,6 +7,10 @@ from differences.kernel.engine import (
     sorting_to_list,
 )
 from differences.kernel.read_file import read_json_file
+from differences.tests.fixtures.result_diff2list import (
+    diff_list,
+    result_difference2list,
+)
 from differences.tests.fixtures.result_sorting_to_list import (
     first_block,
     first_block_answer,
@@ -91,3 +95,19 @@ def test_sorting_to_list(list_one, list_two, list_three, answer):
         answer: summary of lists and sorted by order
     """
     assert sorting_to_list(list_one, list_two, list_three) == answer
+
+
+def test_difference_to_list():
+    """Test function difference to list.
+
+    function accepts prepared arguments:
+    sample file
+    new file
+    list of added arguments
+    list of deleted arguments
+    a sorted list of arguments added, deleted and left unchanged
+
+    The function returns a list of dictionaries with differences between files.
+    """
+    pass_result = result_difference2list
+    assert diff_list == pass_result
