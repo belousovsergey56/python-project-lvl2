@@ -29,10 +29,9 @@ jobs:
       - name: Test with pytest
         run: |
           make test
-      - name: Code Climate's test reporters
-        uses: belousovsergey56/codeclimate-action@v2.7.5
+      - name: Run pytest
+        uses: paambaati/codeclimate-action@v2.7.4
         env:
           CC_TEST_REPORTER_ID: ca5f882685ac6268a5d3c7e443be03ef9ab31c203689219c304f94766796b76b
         with:
           coverageCommand: make test
-          debug: true
