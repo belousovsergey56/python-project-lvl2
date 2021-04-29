@@ -28,6 +28,6 @@ jobs:
           make lint
       - uses: paambaati/codeclimate-action@v2.7.5
         env:
-          CC_TEST_REPORTER_ID: ca5f882685ac6268a5d3c7e443be03ef9ab31c203689219c304f94766796b76b
+          CC_TEST_REPORTER_ID: ${{ secret.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: make test
