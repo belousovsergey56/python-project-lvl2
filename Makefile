@@ -9,6 +9,8 @@ package-install:
 lint:
 	poetry run flake8 differences
 test:
+	poetry run pytest -vv
+test-coverage:
 	poetry run pytest --cov=differences/ --cov-report xml
 remove:
 	pip3 uninstall hexlet-code
